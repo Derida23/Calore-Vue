@@ -4,7 +4,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - calore-vue',
-    title: 'calore-vue',
+    title: 'Calore Vue | Point of Sale | Your Solution Cashier System',
     htmlAttrs: {
       lang: 'en',
     },
@@ -16,7 +16,11 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
+  publicRuntimeConfig: {
+    baseUrl: process.env.BASE_URL,
+    apiUrl: process.env.API_URL,
+    secretKey: process.env.SECRET_KEY,
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
@@ -44,19 +48,30 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    ['cookie-universal-nuxt', { alias: 'cookiz', parseJSON: false }],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    proxy: true,
+  },
+  proxy: {
+    '/api/': {
+      target: process.env.API_URL,
+      pathRewrite: { '^/api/': '/' },
+    },
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    defaultAssets: {
+      font: false,
+      icons: false,
+    },
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
