@@ -1,11 +1,7 @@
 <template>
-  <v-app
-    ><client-only>
-      <v-main>
-        <v-container>
-          <Nuxt />
-        </v-container>
-      </v-main>
+  <v-app>
+    <client-only>
+      <Nuxt />
     </client-only>
   </v-app>
 </template>

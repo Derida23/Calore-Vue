@@ -22,7 +22,7 @@ export default {
     secretKey: process.env.SECRET_KEY,
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['@/assets/scss/style.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -65,14 +65,14 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    defaultAssets: {
-      font: false,
-      icons: false,
-    },
+    customVariables: ['~/assets/styles/variables.scss'],
+
     theme: {
       dark: false,
       themes: {
+        light: {
+          primary: '#704333',
+        },
         dark: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,

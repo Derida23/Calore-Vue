@@ -1,0 +1,11 @@
+.btn-login {
+  .theme--light.v-btn.v-btn--has-bg  {
+    background-color: $primary-color;
+    height: 2.7rem;
+    border-radius: 1rem;
+
+    span {
+      color: white;
+    }
+  }
+}

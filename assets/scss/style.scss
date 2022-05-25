@@ -1,0 +1,10 @@
+// All of the variables css
+@import 'abstracts/variables';
+
+// Component import
+@import 'components/form'; 
+@import 'components/button'; 
+
+// Base root file and vuetify styling
+@import 'base/base';
+@import 'base/override'
