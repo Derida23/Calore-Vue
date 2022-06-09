@@ -8,10 +8,11 @@
         </h4>
       </div>
       <div class="card-body mt-6">
-        <v-form>
+        <v-form @submit.prevent="handleSave">
           <div class="form-input">
             <div class="title-input">Email</div>
             <v-text-field
+              v-model="form.email"
               name="email"
               outlined
               dense
@@ -23,16 +24,19 @@
           <div class="form-input">
             <div class="title-input">Password</div>
             <v-text-field
+              v-model="form.password"
               name="password"
               outlined
               dense
-              type="password"
               placeholder="Enter your password"
               prepend-inner-icon="mdi-key"
+              :type="show ? 'password' : 'text'"
+              :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="show = !show"
             />
           </div>
           <div class="mt-6 btn-login">
-            <v-btn width="100%" type="submit"> SIGN UP </v-btn>
+            <v-btn width="100%" type="submit"> SIGN IN </v-btn>
           </div>
         </v-form>
       </div>
@@ -43,6 +47,20 @@
 <script>
 export default {
   name: 'IndexPage',
+  data() {
+    return {
+      show: false,
+      form: {
+        email: '',
+        password: '',
+      },
+    }
+  },
+  methods: {
+    handleSave() {
+      console.log(this.form)
+    },
+  },
 }
 </script>
 
