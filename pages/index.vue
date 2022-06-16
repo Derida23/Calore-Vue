@@ -38,6 +38,7 @@
           <div class="mt-6 btn-login">
             <v-btn width="100%" type="submit"> SIGN IN </v-btn>
           </div>
+          <pre>{{ store.doubleCount }}</pre>
         </v-form>
       </div>
     </div>
@@ -45,8 +46,15 @@
 </template>
 
 <script>
+import { useMainStore } from '@/store'
+
 export default {
   name: 'IndexPage',
+  setup() {
+    const store = useMainStore()
+
+    return { store }
+  },
   data() {
     return {
       show: false,
@@ -58,7 +66,7 @@ export default {
   },
   methods: {
     handleSave() {
-      console.log(this.form)
+      this.store.increment()
     },
   },
 }

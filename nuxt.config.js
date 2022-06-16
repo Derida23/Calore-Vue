@@ -32,7 +32,12 @@ export default {
     port: '4000',
   },
 
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/vuetify', '@pinia/nuxt'],
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify',
+    '@nuxtjs/composition-api/module',
+    '@pinia/nuxt',
+  ],
 
   modules: [
     '@nuxtjs/axios',
@@ -71,5 +76,13 @@ export default {
     },
   },
 
-  build: {},
+  build: {
+    extend(config) {
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
+      })
+    },
+  },
 }
