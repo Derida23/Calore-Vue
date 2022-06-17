@@ -38,8 +38,6 @@
           <div class="mt-6 btn-login">
             <v-btn width="100%" type="submit"> SIGN IN </v-btn>
           </div>
-          <br />
-          {{ store.title_alert }}
         </v-form>
       </div>
     </div>
@@ -67,6 +65,7 @@ export default {
   },
   methods: {
     handleSave() {
+      this.$overlay(true)
       this.store.login(this.form)
     },
   },

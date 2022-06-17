@@ -21,9 +21,14 @@ export default {
     secretKey: process.env.SECRET_KEY,
   },
 
+  loading: '@/components/Loading.vue',
+
   css: ['@/assets/scss/style.scss'],
 
-  plugins: [{ src: '@/plugins/axios' }],
+  plugins: [
+    { src: '@/plugins/axios' },
+    { src: '@/plugins/overlay', ssr: false },
+  ],
 
   components: true,
 

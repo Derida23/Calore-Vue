@@ -2,21 +2,12 @@ import { defineStore } from 'pinia'
 
 export const useMainStore = defineStore('main', {
   state: () => ({
-    counter: 0,
-    name: 'Eduardo',
+    overlay: false,
   }),
-  getters: {
-    doubleCount: (state) => state.counter * 2,
-    doubleCountPlusOne() {
-      return this.doubleCount * 2 + 1
-    },
-  },
+  getters: {},
   actions: {
-    reset() {
-      this.counter = 0
-    },
-    increment() {
-      this.counter++
+    onOverlay(show) {
+      this.overlay = show
     },
   },
 })

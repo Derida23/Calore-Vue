@@ -4,7 +4,9 @@
 // Component import
 @import 'components/form'; 
 @import 'components/button'; 
+@import 'components/overlay';
 
 // Base root file and vuetify styling
+@import 'base/helpers';
 @import 'base/base';
 @import 'base/override'
