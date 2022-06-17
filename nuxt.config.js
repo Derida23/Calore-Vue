@@ -23,7 +23,7 @@ export default {
 
   css: ['@/assets/scss/style.scss'],
 
-  plugins: [],
+  plugins: [{ src: '@/plugins/axios' }],
 
   components: true,
 

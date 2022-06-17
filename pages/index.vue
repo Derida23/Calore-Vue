@@ -38,7 +38,8 @@
           <div class="mt-6 btn-login">
             <v-btn width="100%" type="submit"> SIGN IN </v-btn>
           </div>
-          <pre>{{ store.doubleCount }}</pre>
+          <br />
+          {{ store.title_alert }}
         </v-form>
       </div>
     </div>
@@ -46,12 +47,12 @@
 </template>
 
 <script>
-import { useMainStore } from '@/store'
+import { useAuthStore } from '@/store/auth'
 
 export default {
   name: 'IndexPage',
   setup() {
-    const store = useMainStore()
+    const store = useAuthStore()
 
     return { store }
   },
@@ -66,7 +67,7 @@ export default {
   },
   methods: {
     handleSave() {
-      this.store.increment()
+      this.store.login(this.form)
     },
   },
 }

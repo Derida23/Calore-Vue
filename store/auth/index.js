@@ -1,17 +1,28 @@
 import { defineStore } from 'pinia'
+import * as api from '@/api'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
+    data: null,
     show_alert: false,
     title_alert: '',
     message_alert: '',
 
     loading: false,
-    status: '',
     code: 0,
   }),
   getters: {},
   actions: {
-    login() {},
+    async login(params) {
+      this.loading = true
+      const res = await api.apiLogin(params)
+
+      this.title_alert = res.title_alert
+      this.message_alert = res.message_alert
+
+      this.status = res.status
+      this.code = res.code
+      this.loading = res.loading
+    },
   },
 })
