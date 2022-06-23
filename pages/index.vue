@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     handleSave() {
-      this.$overlay(true)
+      this.$toast.open('You did it!')
       this.store.login(this.form)
     },
   },

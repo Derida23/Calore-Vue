@@ -14,7 +14,8 @@ export const useAuthStore = defineStore('auth', {
   getters: {},
   actions: {
     async login(params) {
-      this.loading = true
+      this.$nuxt.$overlay(true)
+
       const res = await api.apiLogin(params)
 
       this.title_alert = res.title_alert
@@ -23,6 +24,7 @@ export const useAuthStore = defineStore('auth', {
       this.status = res.status
       this.code = res.code
       this.loading = res.loading
+      this.$nuxt.$overlay(false)
     },
   },
 })
