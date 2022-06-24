@@ -9,21 +9,30 @@
       </div>
       <div class="card-body mt-6">
         <v-form @submit.prevent="handleSave">
-          <div class="form-input">
-            <div class="title-input">Email</div>
-            <v-text-field
-              v-model="form.email"
-              name="email"
-              outlined
-              dense
-              type="email"
-              placeholder="Enter your email"
-              prepend-inner-icon="mdi-at"
-            />
-          </div>
+          <form-validator
+            v-slot="{ errors }"
+            :validator="$v.form.email"
+            field="email"
+          >
+            <div class="form-input">
+              <div class="title-input">Email</div>
+              <v-text-field
+                ref="email"
+                v-model="form.email"
+                name="email"
+                outlined
+                dense
+                type="email"
+                placeholder="Enter your email"
+                prepend-inner-icon="mdi-at"
+                :error-messages="errors"
+              />
+            </div>
+          </form-validator>
           <div class="form-input">
             <div class="title-input">Password</div>
             <v-text-field
+              ref="password"
               v-model="form.password"
               name="password"
               outlined
@@ -45,10 +54,15 @@
 </template>
 
 <script>
+import { required, email } from 'vuelidate/lib/validators'
 import { useAuthStore } from '@/store/auth'
+import FormValidator from '~/components/FormValidator.vue'
 
 export default {
   name: 'IndexPage',
+  components: {
+    FormValidator,
+  },
   setup() {
     const store = useAuthStore()
 
@@ -63,9 +77,31 @@ export default {
       },
     }
   },
+  computed: {
+    message() {
+      return this.store.message
+    },
+  },
+  watch: {
+    message(val) {
+      if (val.show_alert) {
+        this.$toast.open({
+          position: 'top',
+          message: val.message_alert,
+          type: val.title_alert,
+        })
+      }
+    },
+  },
+  validations: {
+    form: {
+      email: { required, email },
+      password: { required },
+    },
+  },
   methods: {
     handleSave() {
-      this.$toast.open('You did it!')
+      this.$v.$touch()
       this.store.login(this.form)
     },
   },

@@ -29,6 +29,7 @@ export default {
     { src: '@/plugins/axios' },
     { src: '@/plugins/overlay', ssr: false },
     { src: '@/plugins/vue-toast-notification', mode: 'client' },
+    { src: '@/plugins/vuelidate' },
   ],
 
   components: true,

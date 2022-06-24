@@ -1,8 +1,10 @@
 export const success = (res) => {
   const data = {
-    show_alert: true,
-    title_alert: 'success',
-    message_alert: res.data.message,
+    message: {
+      show_alert: true,
+      title_alert: 'success',
+      message_alert: res.data.message,
+    },
     loading: false,
     data: res.data.data,
     code: Number(res.data.code),
@@ -13,9 +15,11 @@ export const success = (res) => {
 
 export const failed = (res) => {
   const data = {
-    show_alert: true,
-    title_alert: 'error',
-    message_alert: JSON.stringify(res.data.data),
+    message: {
+      show_alert: true,
+      title_alert: 'error',
+      message_alert: JSON.stringify(res.data.data),
+    },
     loading: false,
     data: null,
     code: Number(res.data.code),
