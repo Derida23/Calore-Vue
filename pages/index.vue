@@ -29,21 +29,28 @@
               />
             </div>
           </form-validator>
-          <div class="form-input">
-            <div class="title-input">Password</div>
-            <v-text-field
-              ref="password"
-              v-model="form.password"
-              name="password"
-              outlined
-              dense
-              placeholder="Enter your password"
-              prepend-inner-icon="mdi-key"
-              :type="show ? 'password' : 'text'"
-              :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append="show = !show"
-            />
-          </div>
+          <form-validator
+            v-slot="{ errors }"
+            :validator="$v.form.password"
+            field="password"
+          >
+            <div class="form-input">
+              <div class="title-input">Password</div>
+              <v-text-field
+                ref="password"
+                v-model="form.password"
+                name="password"
+                outlined
+                dense
+                placeholder="Enter your password"
+                prepend-inner-icon="mdi-key"
+                :type="show ? 'password' : 'text'"
+                :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                :error-messages="errors"
+                @click:append="show = !show"
+              />
+            </div>
+          </form-validator>
           <div class="mt-6 btn-login">
             <v-btn width="100%" type="submit"> SIGN IN </v-btn>
           </div>
@@ -87,7 +94,7 @@ export default {
       if (val.show_alert) {
         this.$toast.open({
           position: 'top',
-          message: val.message_alert,
+          message: val.message_alert[0].message,
           type: val.title_alert,
         })
       }
@@ -102,7 +109,10 @@ export default {
   methods: {
     handleSave() {
       this.$v.$touch()
-      this.store.login(this.form)
+
+      if (!this.$v.$invalid) {
+        this.store.login(this.form)
+      }
     },
   },
 }

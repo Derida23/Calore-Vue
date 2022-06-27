@@ -8,6 +8,7 @@ const TEMPLATES_MAP = {
   minLength: '{{field}} must have a length no less than {{min}}.',
   maxLength: '{{field}} must have a length no more than {{max}}.',
   required: '{{field}} is required',
+  email: '{{field}} must be valid email',
   isUrl: '{{field}} must be valid URL',
   isEmail: '{{field}} must be valid email',
   isPhone: '{{field}} must be valid phone number',

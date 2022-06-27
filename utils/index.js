@@ -18,7 +18,7 @@ export const failed = (res) => {
     message: {
       show_alert: true,
       title_alert: 'error',
-      message_alert: JSON.stringify(res.data.data),
+      message_alert: res.data.data,
     },
     loading: false,
     data: null,
