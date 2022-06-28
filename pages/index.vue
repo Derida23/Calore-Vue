@@ -25,10 +25,12 @@
                 type="email"
                 placeholder="Enter your email"
                 prepend-inner-icon="mdi-at"
+                :disabled="loading"
                 :error-messages="errors"
               />
             </div>
           </form-validator>
+
           <form-validator
             v-slot="{ errors }"
             :validator="$v.form.password"
@@ -46,13 +48,16 @@
                 prepend-inner-icon="mdi-key"
                 :type="show ? 'password' : 'text'"
                 :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                :disabled="loading"
                 :error-messages="errors"
                 @click:append="show = !show"
               />
             </div>
           </form-validator>
           <div class="mt-6 btn-login">
-            <v-btn width="100%" type="submit"> SIGN IN </v-btn>
+            <v-btn width="100%" type="submit" :disabled="loading">
+              SIGN IN
+            </v-btn>
           </div>
         </v-form>
       </div>
@@ -79,8 +84,8 @@ export default {
     return {
       show: false,
       form: {
-        email: '',
-        password: '',
+        email: 'admin@calore.com',
+        password: 'Beny@1234',
       },
     }
   },
@@ -88,13 +93,16 @@ export default {
     message() {
       return this.store.message
     },
+    loading() {
+      return this.store.loading
+    },
   },
   watch: {
     message(val) {
       if (val.show_alert) {
         this.$toast.open({
           position: 'top',
-          message: val.message_alert[0].message,
+          message: val.message_alert,
           type: val.title_alert,
         })
       }
