@@ -13,14 +13,23 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async login(params) {
       this.$nuxt.$overlay(true)
+
       this.loading = true
 
       const res = await api.apiLogin(params)
-      this.datas = res.data
-      this.message = res.message
 
+      this.message = res.message
       this.code = res.code
       this.loading = res.loading
+
+      if (res.code === 200) {
+        this.datas = res.data.user
+
+        this.$nuxt.$cookiz.set('calore-token', res.data.token, {
+          path: '/',
+          maxAge: 60 * 60 * 24 * 1,
+        })
+      }
 
       this.$nuxt.$overlay(false)
     },

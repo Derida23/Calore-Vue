@@ -1,6 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  router: { base: '/', middleware: ['auth'] },
   head: {
     titleTemplate: '%s - calore-vue',
     title: 'Calore Vue | Point of Sale | Your Solution Cashier System',

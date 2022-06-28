@@ -13,14 +13,14 @@
 
 export default function ({ $axios, $config, route, redirect, app, store }) {
   $axios.onRequest((config) => {
-    console.log('ON REQUEST ->', config)
+    // console.log('ON REQUEST ->', config)
   })
 
   $axios.onResponse((res) => {
-    console.log('ON RESPONSE ->', res)
+    // console.log('ON RESPONSE ->', res)
   })
 
-  $axios.onError((err) => {
-    console.log('ON ERROR ->', err)
+  $axios.onError(() => {
+    // console.log('ON ERROR ->', err)
   })
 }
