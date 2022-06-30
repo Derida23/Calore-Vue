@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid fill-height>
+  <v-container>
     <div>PROFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</div>
   </v-container>
 </template>

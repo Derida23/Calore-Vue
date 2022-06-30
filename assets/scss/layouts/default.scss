@@ -1,10 +1,11 @@
 .dashboard {
-  background-color: #f6f6f6 !important;
+  background-color: #F9F8FB !important;
+  padding: 0px !important;
 }
 
-.navbar-header {
-  font-family: 'Poppins', sans-serif;
-  background-color: red  !important;
+.sidebar-left {
+  background-color: #FFFEFE  !important;
+  width: 150px !important;
 
   .v-navigation-drawer__content {
     overflow: unset;
@@ -17,19 +18,47 @@
     }
   }
 
+  .v-navigation-drawer__border {
+    width: 0px;
+  }
+
   .brand-container {
     display: flex;
     height: 64px;
-    background-color: #fff;
+    background-color: #FFFEFE;
     justify-content: center;
     align-items: center;
   }
 
-  .v-list-item__title {
-    color: #fff !important;
+  .v-list-item{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .v-navigation-drawer__border {
-    width: 0px;
+.menu-container{
+  cursor: pointer;
+  width: 90px;
+  height: 100px;
+  
+  .menu-icon {
+    margin-top: 15px;
+    width: 35px;
+    height: 35px;
   }
+  
+  .menu-name {
+    margin-top: 0.6rem;
+    text-align: center;
+  }
+}
+
+.menu-container:hover{
+  color: white;
+  background-color: #714333;
+  border-radius: 0.8rem;
+ }
+
+
 }

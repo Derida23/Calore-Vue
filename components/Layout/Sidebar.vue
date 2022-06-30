@@ -1,31 +1,32 @@
 <template>
-  <div>
-    <v-navigation-drawer class="navbar-header" app>
-      <v-layout class="brand-container" align-center justify-center>
-        Logo Header
-      </v-layout>
+  <v-navigation-drawer class="sidebar-left" app>
+    <v-layout class="brand-container" align-center justify-center>
+      <img src="/calore-header.jpg" alt="calore logo" />
+    </v-layout>
 
-      <v-list class="list" dense>
-        <v-list-item-group color="red">
-          <div class="product-type">Product Type</div>
-          <div>
-            <div class="list__title">
-              <p class="list__title__text">Text</p>
-            </div>
-
-            <div>
-              <v-list-item>
-                <v-list-item-action> Icon </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Menu Name</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </div>
+    <v-list class="list" dense>
+      <v-list-item>
+        <div class="menu-container">
+          <div class="flex">
+            <img
+              class="menu-icon"
+              src="/menu/dashboard.png"
+              alt="dashboard icon"
+            />
           </div>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
-  </div>
+          <p class="menu-name">Home</p>
+        </div>
+      </v-list-item>
+      <v-list-item>
+        <div class="menu-container">
+          <div class="flex">
+            <img class="menu-icon" src="/menu/order.png" alt="order icon" />
+          </div>
+          <p class="menu-name">Order</p>
+        </div>
+      </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script>
