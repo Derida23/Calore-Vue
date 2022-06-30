@@ -1,6 +1,16 @@
 // import menus from '@/menu'
 const auth = ({ app, route, redirect, store }) => {
-  console.log(!!app.$cookiz.get('calore-token'))
+  const isLogin = !!app.$cookiz.get('calore-token')
+  const urlLogin =
+    route.name !== null && route.name.includes('index')
+      ? route.name.includes('index')
+      : ''
+
+  if (!isLogin) {
+    redirect('/')
+  } else if (urlLogin) {
+    redirect('/order')
+  }
 }
 
 export default auth

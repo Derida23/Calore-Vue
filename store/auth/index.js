@@ -29,9 +29,13 @@ export const useAuthStore = defineStore('auth', {
           path: '/',
           maxAge: 60 * 60 * 24 * 1,
         })
+
+        this.$nuxt.$overlay(false)
+        return true
       }
 
       this.$nuxt.$overlay(false)
+      return false
     },
   },
 })

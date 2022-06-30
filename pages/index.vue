@@ -115,11 +115,15 @@ export default {
     },
   },
   methods: {
-    handleSave() {
+    async handleSave() {
       this.$v.$touch()
 
       if (!this.$v.$invalid) {
-        this.store.login(this.form)
+        const response = await this.store.login(this.form)
+
+        if (response) {
+          this.$router.push('order')
+        }
       }
     },
   },
