@@ -6,7 +6,10 @@
 @import 'components/button'; 
 @import 'components/overlay';
 
+// Layout import
+@import 'layouts/default';
+
 // Base root file and vuetify styling
 @import 'base/helpers';
 @import 'base/base';
-@import 'base/override'
+@import 'base/override';

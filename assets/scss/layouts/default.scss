@@ -1,0 +1,35 @@
+.dashboard {
+  background-color: #f6f6f6 !important;
+}
+
+.navbar-header {
+  font-family: 'Poppins', sans-serif;
+  background-color: red  !important;
+
+  .v-navigation-drawer__content {
+    overflow: unset;
+
+    .list {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-bottom: 100px;
+    }
+  }
+
+  .brand-container {
+    display: flex;
+    height: 64px;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .v-list-item__title {
+    color: #fff !important;
+  }
+
+  .v-navigation-drawer__border {
+    width: 0px;
+  }
+}
