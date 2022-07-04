@@ -5,7 +5,7 @@
 
 .sidebar-left {
   background-color: #FFFEFE  !important;
-  width: 150px !important;
+  width: 100px !important;
 
   .v-navigation-drawer__content {
     overflow: unset;
@@ -15,6 +15,7 @@
       overflow-y: auto;
       overflow-x: hidden;
       padding-bottom: 100px;
+      position: relative;
     }
   }
 
@@ -40,17 +41,18 @@
 .menu-container{
   cursor: pointer;
   width: 90px;
-  height: 100px;
+  height: 75px;
   
   .menu-icon {
     margin-top: 15px;
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
   }
   
   .menu-name {
-    margin-top: 0.6rem;
+    margin-top: 0.2rem;
     text-align: center;
+    font-size: 12px;
   }
 }
 
@@ -58,6 +60,13 @@
   color: white;
   background-color: #714333;
   border-radius: 0.8rem;
+ }
+
+ .relative-setting{
+  position: absolute;
+  bottom: 5rem;
+  width: 100px;
+  height: 75px;
  }
 
 

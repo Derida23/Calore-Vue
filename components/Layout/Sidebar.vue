@@ -25,6 +25,30 @@
           <p class="menu-name">Order</p>
         </div>
       </v-list-item>
+      <v-list-item>
+        <div class="menu-container">
+          <div class="flex">
+            <img class="menu-icon" src="/menu/history.png" alt="history icon" />
+          </div>
+          <p class="menu-name">History</p>
+        </div>
+      </v-list-item>
+      <v-list-item>
+        <div class="menu-container">
+          <div class="flex">
+            <img class="menu-icon" src="/menu/profile.png" alt="profile icon" />
+          </div>
+          <p class="menu-name">Profile</p>
+        </div>
+      </v-list-item>
+      <v-list-item class="relative-setting">
+        <div class="menu-container">
+          <div class="flex">
+            <img class="menu-icon" src="/menu/setting.png" alt="setting icon" />
+          </div>
+          <p class="menu-name">Setting</p>
+        </div>
+      </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
