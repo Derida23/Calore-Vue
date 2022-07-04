@@ -1,9 +1,9 @@
 <template>
-  <div>PROFILE</div>
+  <div>HOME DASHBOARD</div>
 </template>
 
 <script>
 export default {
-  name: 'ProfilePage',
+  name: 'HomePage',
 }
 </script>

@@ -5,58 +5,51 @@
     </v-layout>
 
     <v-list class="list" dense>
-      <v-list-item>
-        <div class="menu-container">
-          <div class="flex">
-            <img
-              class="menu-icon"
-              src="/menu/dashboard.png"
-              alt="dashboard icon"
-            />
+      <template v-for="(menu, index) in store.datas">
+        <v-list-item
+          :key="index"
+          :class="menu.name === 'setting' && 'relative-setting'"
+        >
+          <div
+            class="menu-container"
+            :class="{ 'menu-active': menu.active }"
+            @click="handleRoute(menu.url, index)"
+          >
+            <div class="flex">
+              <img
+                class="menu-icon"
+                :src="menu.img + `${menu.active ? '-active.png' : '.png'}`"
+                :alt="menu.name + ' icon'"
+              />
+            </div>
+            <p class="menu-name">{{ menu.name }}</p>
           </div>
-          <p class="menu-name">Home</p>
-        </div>
-      </v-list-item>
-      <v-list-item>
-        <div class="menu-container">
-          <div class="flex">
-            <img class="menu-icon" src="/menu/order.png" alt="order icon" />
-          </div>
-          <p class="menu-name">Order</p>
-        </div>
-      </v-list-item>
-      <v-list-item>
-        <div class="menu-container">
-          <div class="flex">
-            <img class="menu-icon" src="/menu/history.png" alt="history icon" />
-          </div>
-          <p class="menu-name">History</p>
-        </div>
-      </v-list-item>
-      <v-list-item>
-        <div class="menu-container">
-          <div class="flex">
-            <img class="menu-icon" src="/menu/profile.png" alt="profile icon" />
-          </div>
-          <p class="menu-name">Profile</p>
-        </div>
-      </v-list-item>
-      <v-list-item class="relative-setting">
-        <div class="menu-container">
-          <div class="flex">
-            <img class="menu-icon" src="/menu/setting.png" alt="setting icon" />
-          </div>
-          <p class="menu-name">Setting</p>
-        </div>
-      </v-list-item>
+        </v-list-item>
+      </template>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
+import { useMenuStore } from '@/store/menu'
 export default {
   name: 'SidebarLayout',
-  computed: {},
-  methods: {},
+  setup() {
+    const store = useMenuStore()
+
+    return { store }
+  },
+  mounted() {
+    this.loadMenu()
+  },
+  methods: {
+    loadMenu() {
+      this.store.menu()
+    },
+    handleRoute(url, index) {
+      this.store.setActive(index)
+      this.$router.push(url)
+    },
+  },
 }
 </script>

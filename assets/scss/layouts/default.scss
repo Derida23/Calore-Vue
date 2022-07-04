@@ -53,11 +53,22 @@
     margin-top: 0.2rem;
     text-align: center;
     font-size: 12px;
+    color: #b0b1b0;
+  }
+
+}
+
+.menu-active {
+  background-color: #714333;
+  border-radius: 0.8rem;
+
+  .menu-name{
+    color: white;
   }
 }
 
+
 .menu-container:hover{
-  color: white;
   background-color: #714333;
   border-radius: 0.8rem;
  }
