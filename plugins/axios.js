@@ -13,7 +13,11 @@
 
 export default function ({ $axios, $config, route, redirect, app, store }) {
   $axios.onRequest((config) => {
-    // console.log('ON REQUEST ->', config)
+    const token = app.$cookiz.get('calore-token')
+
+    if (token) {
+      config.headers.common.Authorization = `Bearer ${token}`
+    }
   })
 
   $axios.onResponse((res) => {

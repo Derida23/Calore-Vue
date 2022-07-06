@@ -16,14 +16,14 @@ export const useMasterStore = defineStore('master', {
 
       this.loading = true
 
-      const res = await api.apiCategory(params, 'get')
+      const res = await api.apiCategory(params, 'get', this.$nuxt)
 
       this.message = res.message
       this.code = res.code
       this.loading = res.loading
 
       if (res.code === 200) {
-        this.categories = res.data.data
+        this.categories = res.data
 
         this.$nuxt.$overlay(false)
         return true

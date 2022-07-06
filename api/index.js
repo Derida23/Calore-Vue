@@ -10,14 +10,14 @@ const apiLogin = async (params) => {
   }
 }
 
-const apiCategory = async (params, method) => {
+const apiCategory = async (params, method, context) => {
   if (method === 'get') {
     try {
       const query = Object.keys(params)
         .map((key) => key + '=' + params[key])
         .join('&')
 
-      const response = await axios.get(`/api/category${'?' + query}`)
+      const response = await context.$axios.get(`/api/category${'?' + query}`)
       return success(response)
     } catch (err) {
       return failed(err.response)

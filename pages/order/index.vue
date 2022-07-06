@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div>ORDER</div>
-    <div>{{ store.categories }}</div>
-  </div>
+  <div>ORDER</div>
 </template>
 
 <script>
