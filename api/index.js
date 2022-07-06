@@ -10,4 +10,18 @@ const apiLogin = async (params) => {
   }
 }
 
-export { apiLogin }
+const apiCategory = async (params, method) => {
+  if (method === 'get') {
+    try {
+      const query = Object.keys(params)
+        .map((key) => key + '=' + params[key])
+        .join('&')
+
+      const response = await axios.get(`/api/category${'?' + query}`)
+      return success(response)
+    } catch (err) {
+      return failed(err.response)
+    }
+  }
+}
+export { apiLogin, apiCategory }

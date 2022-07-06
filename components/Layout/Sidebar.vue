@@ -1,7 +1,12 @@
 <template>
   <v-navigation-drawer class="sidebar-left" app>
     <v-layout class="brand-container" align-center justify-center>
-      <img src="/calore-header.jpg" alt="calore logo" />
+      <img
+        style="cursor: pointer"
+        src="/calore-header.jpg"
+        alt="calore logo"
+        @click="$router.push('order')"
+      />
     </v-layout>
 
     <v-list class="list" dense>
