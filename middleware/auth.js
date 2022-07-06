@@ -8,7 +8,7 @@ const auth = ({ app, route, redirect, store }) => {
 
   if (!isLogin) {
     redirect('/')
-  } else if (urlLogin) {
+  } else if (isLogin && urlLogin) {
     redirect('/order')
   }
 }

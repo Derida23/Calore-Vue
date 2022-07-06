@@ -14,7 +14,6 @@
 export default function ({ $axios, $config, route, redirect, app, store }) {
   $axios.onRequest((config) => {
     const token = app.$cookiz.get('calore-token')
-
     if (token) {
       config.headers.common.Authorization = `Bearer ${token}`
     }
@@ -24,7 +23,9 @@ export default function ({ $axios, $config, route, redirect, app, store }) {
     // console.log('ON RESPONSE ->', res)
   })
 
-  $axios.onError(() => {
-    // console.log('ON ERROR ->', err)
+  $axios.onError((err) => {
+    if (err) {
+      if (err.response.status === 401) redirect('/')
+    }
   })
 }
