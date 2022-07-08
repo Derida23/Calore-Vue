@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <h1 v-if="error.statusCode === 404">
       {{ pageNotFound }}
     </h1>
@@ -32,6 +32,14 @@ export default {
     return {
       title,
     }
+  },
+  mounted() {
+    this.handleRoute()
+  },
+  methods: {
+    handleRoute() {
+      this.$router.push('/404')
+    },
   },
 }
 </script>

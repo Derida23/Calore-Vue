@@ -7,9 +7,23 @@
         class="loading-ssr"
       ></v-overlay>
       <v-app>
-        <Sidebar v-if="$route.path !== '/'" />
+        <Sidebar
+          v-if="
+            $route.path !== '/' &&
+            $route.path !== '/404' &&
+            $route.path !== '/401' &&
+            $route.path !== '/500'
+          "
+        />
 
-        <Nuxt v-if="$route.path === '/'" />
+        <Nuxt
+          v-if="
+            $route.path === '/' ||
+            $route.path === '/404' ||
+            $route.path === '/401' ||
+            $route.path === '/500'
+          "
+        />
         <v-main v-else class="dashboard">
           <v-container>
             <Nuxt />
