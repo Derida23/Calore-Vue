@@ -2,7 +2,21 @@
   <v-row>
     <v-col md="9" class="pr-5">
       <div>
-        <h1>Choose Category</h1>
+        <div class="title-order">
+          <h1>Choose Category</h1>
+          <!-- <v-text-field
+            ref="email"
+            v-model="form.email"
+            name="email"
+            outlined
+            dense
+            type="email"
+            placeholder="Enter your email"
+            prepend-inner-icon="mdi-at"
+            :disabled="loading"
+            :error-messages="errors"
+          /> -->
+        </div>
 
         <Category
           :category="storeCategory.categories"
@@ -14,9 +28,9 @@
           <div class="title-order">
             <h2>{{ data_category.name }} Menu</h2>
             <p v-if="data_category.id">
-              {{ storeProduct.datas.length }} {{ data_category.name }}s Result
+              {{ total_data }} {{ data_category.name }}s Result
             </p>
-            <p v-else>{{ storeProduct.datas.length }} Menu Result</p>
+            <p v-else>{{ total_data }} Menu Result</p>
           </div>
           <pre>{{ storeProduct.datas }}</pre>
         </div>
@@ -53,6 +67,12 @@ export default {
         category_id: '',
       },
     }
+  },
+  computed: {
+    total_data() {
+      const data = this.storeProduct.datas ?? []
+      return data.length
+    },
   },
   mounted() {
     this.category()
