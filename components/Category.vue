@@ -1,14 +1,18 @@
 <template>
   <v-row class="mt-5 mb-5">
-    <div class="card mx-2">
+    <div class="card mx-2" @click="handleCategory({ name: '', id: 0 })">
       <div class="image">
         <img src="/category/all.png" alt="all logo" />
       </div>
       <p>All</p>
     </div>
-
     <template v-for="(item, index) in category">
-      <div :key="index" class="card mx-2">
+      <div
+        :key="index"
+        class="card mx-2"
+        :class="{ 'card-active': Number(item.id) === data.id }"
+        @click="handleCategory(item)"
+      >
         <div class="image">
           <img
             :src="`/category/${item.name.toLowerCase()}.png`"
@@ -26,6 +30,13 @@ export default {
   name: 'CategoryComponent',
   props: {
     category: { type: Array, default: () => [] },
+    data: { type: Object, default: () => {} },
+  },
+  methods: {
+    handleCategory(params) {
+      const data = { name: params.name, id: Number(params.id) }
+      this.$emit('choose', data)
+    },
   },
 }
 </script>
@@ -38,18 +49,19 @@ export default {
   cursor: pointer;
 
   border-style: solid;
-  border-radius: 1rem;
-  border-width: thin;
+  border-radius: 1.3rem;
+  border-width: 2.3px;
   border-color: #f3eef0;
 
   .image {
     width: 100px;
+    height: 78px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     img {
-      width: 5rem;
+      width: 4rem;
     }
   }
 
@@ -58,6 +70,15 @@ export default {
     margin: 0px !important;
     margin-top: -7px !important;
     padding: 0px !important;
+  }
+}
+
+.card-active {
+  background: #f5efef;
+  border-color: #b0968e;
+
+  p {
+    font-weight: 700;
   }
 }
 

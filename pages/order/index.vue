@@ -1,10 +1,26 @@
 <template>
-  <div>
-    <h1>Choose Category</h1>
+  <v-row>
+    <v-col md="9" class="pr-5">
+      <div>
+        <h1>Choose Category</h1>
 
-    <Category :category="store.categories" />
-    <div>ORDER</div>
-  </div>
+        <Category
+          :category="store.categories"
+          :data="data_category"
+          @choose="handleCategory"
+        />
+
+        <div>
+          <div class="title-order">
+            <h2>{{ data_category.name }} Menu</h2>
+            <p v-if="data_category.id">12 {{ data_category.name }}s Result</p>
+            <p v-else>12 Products Result</p>
+          </div>
+        </div>
+      </div></v-col
+    >
+    <v-col md="3"><div>INI TEMPAT CHECKOUT</div></v-col>
+  </v-row>
 </template>
 
 <script>
@@ -21,6 +37,11 @@ export default {
 
     return { store }
   },
+  data() {
+    return {
+      data_category: { name: '', id: 0 },
+    }
+  },
   mounted() {
     this.category()
   },
@@ -30,6 +51,17 @@ export default {
 
       return res
     },
+    handleCategory(params) {
+      this.data_category = { name: params.name, id: Number(params.id) }
+    },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.title-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>
