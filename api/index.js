@@ -10,6 +10,7 @@ const apiLogin = async (params) => {
   }
 }
 
+// Master Data --------------------------------------------------------------------->
 const apiCategory = async (params, method, context) => {
   if (method === 'get') {
     try {
@@ -24,4 +25,20 @@ const apiCategory = async (params, method, context) => {
     }
   }
 }
-export { apiLogin, apiCategory }
+
+// Product ------------------------------------------------------------------------->
+const apiProduct = async (params, method, context) => {
+  if (method === 'get') {
+    try {
+      const query = Object.keys(params)
+        .map((key) => key + '=' + params[key])
+        .join('&')
+
+      const response = await context.$axios.get(`/api/product${'?' + query}`)
+      return success(response)
+    } catch (err) {
+      return failed(err.response)
+    }
+  }
+}
+export { apiLogin, apiCategory, apiProduct }
