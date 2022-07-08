@@ -42,6 +42,13 @@ export const useMenuStore = defineStore('menu', {
         },
         {
           id: 5,
+          name: 'master',
+          url: 'master',
+          img: '/menu/master',
+          active: false,
+        },
+        {
+          id: 6,
           name: 'setting',
           url: 'setting',
           img: '/menu/setting',
