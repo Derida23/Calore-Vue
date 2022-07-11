@@ -134,9 +134,8 @@ export default {
 }
 .card-container {
   padding-right: 12px;
-
   width: 100%;
-  max-height: 25rem;
+  max-height: 57vh;
 
   overflow-y: scroll;
   overflow-x: hidden;

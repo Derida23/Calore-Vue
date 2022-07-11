@@ -3,7 +3,7 @@
     <v-row>
       <v-col md="4">
         <div class="image-wrapper">
-          <img :src="item.image" :alt="item.name" style="object-fit: contain" />
+          <img :src="item.image" :alt="item.name" />
         </div>
       </v-col>
       <v-col md="8" class="order-description">
@@ -26,13 +26,16 @@ export default {
 
 <style lang="scss" scoped>
 .item-container {
+  cursor: pointer;
   background: #fffefe;
   border-radius: 1rem;
   width: 100%;
   height: auto;
-  cursor: pointer;
 
   padding: 1rem;
+}
+.item-container:hover {
+  box-shadow: 0 16px 24px hsl(0deg 0% 75% / 16%);
 }
 .image-wrapper {
   width: 110px;
