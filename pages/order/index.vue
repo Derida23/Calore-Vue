@@ -2,18 +2,19 @@
   <v-row>
     <v-col md="9" class="pr-5">
       <div>
-        <div class="title-order" style="background: red">
+        <div class="title-page">
           <h1>Choose Category</h1>
           <div style="width: 40%">
             <v-text-field
               ref="search"
+              v-model="filter.search"
               name="search"
               outlined
               dense
               type="search"
-              placeholder="Search menu"
-              width="90px"
-              prepend-inner-icon="mdi-at"
+              placeholder="Enter to search menu..."
+              append-icon="mdi-magnify"
+              @keyup.enter="product()"
             />
           </div>
         </div>
@@ -109,6 +110,11 @@ export default {
 
 <style lang="scss" scoped>
 .title-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title-page {
   display: flex;
   justify-content: space-between;
 }
