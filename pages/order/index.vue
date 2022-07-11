@@ -2,20 +2,20 @@
   <v-row>
     <v-col md="9" class="pr-5">
       <div>
-        <div class="title-order">
+        <div class="title-order" style="background: red">
           <h1>Choose Category</h1>
-          <!-- <v-text-field
-            ref="email"
-            v-model="form.email"
-            name="email"
-            outlined
-            dense
-            type="email"
-            placeholder="Enter your email"
-            prepend-inner-icon="mdi-at"
-            :disabled="loading"
-            :error-messages="errors"
-          /> -->
+          <div style="width: 40%">
+            <v-text-field
+              ref="search"
+              name="search"
+              outlined
+              dense
+              type="search"
+              placeholder="Search menu"
+              width="90px"
+              prepend-inner-icon="mdi-at"
+            />
+          </div>
         </div>
 
         <Category
@@ -111,6 +111,5 @@ export default {
 .title-order {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 </style>
