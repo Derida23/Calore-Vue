@@ -1,9 +1,9 @@
 <template>
-  <div>404 PAGE</div>
+  <div>500 PAGE</div>
 </template>
 
 <script>
 export default {
-  name: '404Page',
+  name: '500Page',
 }
 </script>
