@@ -1,5 +1,5 @@
 <template>
-  <v-row>
+  <v-row class="order-container">
     <v-col md="9" class="pr-5">
       <div>
         <div class="title-page">
@@ -33,7 +33,15 @@
             </p>
             <p v-else>{{ total_data }} Menu Result</p>
           </div>
-          <pre>{{ storeProduct.datas }}</pre>
+          <div class="mt-4 card-container">
+            <v-row>
+              <template v-for="(item, index) in storeProduct.datas">
+                <v-col :key="index" md="6">
+                  <CardOrder :item="item" />
+                </v-col>
+              </template>
+            </v-row>
+          </div>
         </div>
       </div>
     </v-col>
@@ -44,12 +52,14 @@
 <script>
 import { useMasterStore } from '@/store/master'
 import { useProductStore } from '@/store/product'
-import Category from '@/components/Category'
+import Category from '@/components/order/Category'
+import CardOrder from '@/components/order/CardOrder'
 
 export default {
   name: 'OrderPage',
   components: {
     Category,
+    CardOrder,
   },
   setup() {
     const storeCategory = useMasterStore()
@@ -109,6 +119,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.order-container {
+  height: 100vh;
+  overflow: hidden;
+}
 .title-order {
   display: flex;
   justify-content: space-between;
@@ -117,5 +131,14 @@ export default {
 .title-page {
   display: flex;
   justify-content: space-between;
+}
+.card-container {
+  padding-right: 12px;
+
+  width: 100%;
+  max-height: 25rem;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 </style>

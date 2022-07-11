@@ -31,6 +31,7 @@ export default {
     { src: '@/plugins/overlay', ssr: false },
     { src: '@/plugins/vue-toast-notification', mode: 'client' },
     { src: '@/plugins/vuelidate' },
+    { src: '@/plugins/filter' },
   ],
 
   components: true,
