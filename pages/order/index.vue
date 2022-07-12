@@ -52,7 +52,7 @@
     <!-- Modal Dialog Item -->
     <v-dialog v-model="dialog_detail" persistent scrollable max-width="650px">
       <v-card elevation="0">
-        <div v-if="dialog_item" class="ma-10">
+        <div v-if="dialog_item" class="pa-5 dialog-container">
           <v-row>
             <v-col md="6">
               <div class="d-flex">
@@ -75,9 +75,28 @@
               </div>
             </v-col>
             <v-col md="6">
-              <div class="mt-2">
-                <h3>Mood</h3>
-              </div>
+              <v-row class="mt-2">
+                <div>
+                  <h3>Mood</h3>
+                  <div class="order-mood">
+                    <div class="img-mood">
+                      <img src="~/static/order/Hot.png" alt="variety icon" />
+                    </div>
+                    <div class="img-mood">
+                      <img src="~/static/order/Cold.png" alt="variety icon" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ml-5">
+                  <h3>Size</h3>
+                  <div class="order-mood">
+                    <div class="img-mood">S</div>
+                    <div class="img-mood">M</div>
+                    <div class="img-mood">L</div>
+                  </div>
+                </div>
+              </v-row>
             </v-col>
           </v-row>
         </div>
@@ -142,7 +161,7 @@ export default {
         status: 1,
         category_id: '',
       },
-      dialog_detail: true,
+      dialog_detail: false,
       dialog_item: null,
     }
   },
@@ -238,6 +257,12 @@ export default {
   background-color: #f3eef0;
 }
 
+.dialog-container {
+  border-radius: 1rem !important;
+  background: #f9f8fb;
+  margin: 1rem;
+}
+
 .image-wrapper {
   width: 90px;
   height: 90px;
@@ -253,6 +278,35 @@ export default {
     height: 90px;
     object-fit: cover !important;
     border-radius: 0.5rem;
+  }
+}
+.order-mood {
+  display: flex;
+  margin-top: 8px;
+
+  .img-mood {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: #f6efef;
+    margin-right: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .img-mood:hover {
+    border-width: 2px;
+    border-style: solid;
+
+    border-color: #a6887e;
   }
 }
 </style>
