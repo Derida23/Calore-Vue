@@ -49,12 +49,7 @@
       <v-col md="3"><div>INI TEMPAT CHECKOUT</div></v-col>
     </v-row>
 
-    <v-dialog
-      v-model="dialog_detail"
-      transition="slide-x-reverse-transition"
-      content-class="v-dialog--custom v-dialog--custom-right"
-      max-width="513px"
-    >
+    <v-dialog v-model="dialog_detail" persistent scrollable max-width="513px">
       <v-card elevation="0">asdasd</v-card></v-dialog
     >
   </div>
