@@ -1,10 +1,12 @@
 // All of the variables css
+@import 'abstracts/mixins';
 @import 'abstracts/variables';
 
 // Component import
 @import 'components/form'; 
 @import 'components/button'; 
 @import 'components/overlay';
+@import 'components/dialog';
 
 // Layout import
 @import 'layouts/default';

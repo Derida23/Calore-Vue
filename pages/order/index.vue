@@ -1,52 +1,63 @@
 <template>
-  <v-row class="order-container">
-    <v-col md="9" class="pr-5">
-      <div>
-        <div class="title-page">
-          <h1>Choose Category</h1>
-          <div style="width: 40%">
-            <v-text-field
-              ref="search"
-              v-model="filter.search"
-              name="search"
-              outlined
-              dense
-              type="search"
-              placeholder="Enter to search menu..."
-              append-icon="mdi-magnify"
-              @keyup.enter="product()"
-            />
-          </div>
-        </div>
-
-        <Category
-          :category="storeCategory.categories"
-          :data="data_category"
-          @choose="handleCategory"
-        />
-
+  <div>
+    <v-row class="order-container">
+      <v-col md="9" class="pr-5">
         <div>
-          <div class="title-order">
-            <h2>{{ data_category.name }} Menu</h2>
-            <p v-if="data_category.id">
-              {{ total_data }} {{ data_category.name }}s Result
-            </p>
-            <p v-else>{{ total_data }} Menu Result</p>
+          <div class="title-page">
+            <h1>Choose Category</h1>
+            <div style="width: 40%">
+              <v-text-field
+                ref="search"
+                v-model="filter.search"
+                name="search"
+                outlined
+                dense
+                type="search"
+                placeholder="Enter to search menu..."
+                append-icon="mdi-magnify"
+                @keyup.enter="product()"
+              />
+            </div>
           </div>
-          <div class="mt-4 card-container">
-            <v-row>
-              <template v-for="(item, index) in storeProduct.datas">
-                <v-col :key="index" md="6">
-                  <CardOrder :item="item" />
-                </v-col>
-              </template>
-            </v-row>
+
+          <Category
+            :category="storeCategory.categories"
+            :data="data_category"
+            @choose="handleCategory"
+          />
+
+          <div>
+            <div class="title-order">
+              <h2>{{ data_category.name }} Menu</h2>
+              <p v-if="data_category.id">
+                {{ total_data }} {{ data_category.name }}s Result
+              </p>
+              <p v-else>{{ total_data }} Menu Result</p>
+            </div>
+            <div class="mt-4 card-container">
+              <v-row>
+                <template v-for="(item, index) in storeProduct.datas">
+                  <v-col :key="index" md="6">
+                    <CardOrder :item="item" />
+                  </v-col>
+                </template>
+              </v-row>
+            </div>
           </div>
         </div>
-      </div>
-    </v-col>
-    <v-col md="3"><div>INI TEMPAT CHECKOUT</div></v-col>
-  </v-row>
+      </v-col>
+      <v-col md="3"><div>INI TEMPAT CHECKOUT</div></v-col>
+    </v-row>
+
+    <v-dialog
+      v-model="dialog_detail"
+      transition="slide-x-reverse-transition"
+      content-class="v-dialog--custom v-dialog--custom-right"
+      max-width="513px"
+    >
+      <v-card elevation="0">asdasd</v-card></v-dialog
+    >
+  </div>
 </template>
 
 <script>
@@ -77,6 +88,7 @@ export default {
         status: 1,
         category_id: '',
       },
+      dialog_detail: true,
     }
   },
   computed: {
