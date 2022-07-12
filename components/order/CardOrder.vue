@@ -11,7 +11,7 @@
         <p class="mt-2">{{ item.description | truncate() }}.</p>
         <div class="flex-between">
           <h3>{{ item.unit_price | money() }}</h3>
-          <v-btn icon> <v-icon>mdi-star</v-icon></v-btn>
+          <v-btn icon> <v-icon>mdi-shopping</v-icon></v-btn>
         </div>
       </v-col>
     </v-row>
