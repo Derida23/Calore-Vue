@@ -140,4 +140,30 @@ export default {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+.card-container::-webkit-scrollbar {
+  border-radius: 16px;
+  width: 12px;
+  padding-left: 10px;
+  // background-color: #f5f8fa;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+  border-radius: 16px;
+  background-color: #714333;
+}
+
+.card-container::-webkit-scrollbar-track {
+  border-radius: 16px;
+  background-color: transparent;
+}
+
+.card-container::-webkit-scrollbar-track-piece:end {
+  border-radius: 16px;
+  margin-bottom: 200px;
+  background-color: #f3eef0;
+}
+.card-container::-webkit-scrollbar-track-piece:start {
+  border-radius: 16px;
+  background-color: #f3eef0;
+}
 </style>
