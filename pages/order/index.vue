@@ -50,22 +50,35 @@
     </v-row>
 
     <!-- Modal Dialog Item -->
-    <v-dialog v-model="dialog_detail" persistent scrollable max-width="700px">
+    <v-dialog v-model="dialog_detail" persistent scrollable max-width="650px">
       <v-card elevation="0">
-        <div v-if="dialog_item" class="mx-5 my-5">
+        <div v-if="dialog_item" class="ma-10">
           <v-row>
-            <div class="image-wrapper">
-              <img :src="dialog_item.image" :alt="dialog_item.name" />
-            </div>
+            <v-col md="6">
+              <div class="d-flex">
+                <div class="image-wrapper">
+                  <img :src="dialog_item.image" :alt="dialog_item.name" />
+                </div>
 
-            <div class="ml-5">
-              <h2 class="order-title">{{ dialog_item.name }}</h2>
-              <div class="flex">
-                <v-btn icon>
-                  <v-icon>mdi-min</v-icon>
-                </v-btn>
+                <div class="ml-3">
+                  <h3 class="order-title mt-2">{{ dialog_item.name }}</h3>
+                  <div class="flex-around mt-3" style="width: 100px">
+                    <v-btn icon>
+                      <v-icon color="#714333">mdi-minus</v-icon>
+                    </v-btn>
+                    <b>1</b>
+                    <v-btn icon>
+                      <v-icon color="#714333">mdi-plus</v-icon>
+                    </v-btn>
+                  </div>
+                </div>
               </div>
-            </div>
+            </v-col>
+            <v-col md="6">
+              <div class="mt-2">
+                <h3>Mood</h3>
+              </div>
+            </v-col>
           </v-row>
         </div>
         <v-card-actions
@@ -129,7 +142,7 @@ export default {
         status: 1,
         category_id: '',
       },
-      dialog_detail: false,
+      dialog_detail: true,
       dialog_item: null,
     }
   },
