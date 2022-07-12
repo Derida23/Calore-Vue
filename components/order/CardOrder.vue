@@ -9,7 +9,10 @@
       <v-col md="8" class="order-description">
         <h3 class="order-title">{{ item.name }}</h3>
         <p class="mt-2">{{ item.description | truncate() }}.</p>
-        <h3>{{ item.unit_price | money() }}</h3>
+        <div class="flex-between">
+          <h3>{{ item.unit_price | money() }}</h3>
+          <v-btn icon> <v-icon>mdi-star</v-icon></v-btn>
+        </div>
       </v-col>
     </v-row>
   </div>
