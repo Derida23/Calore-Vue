@@ -38,7 +38,7 @@
               <v-row>
                 <template v-for="(item, index) in storeProduct.datas">
                   <v-col :key="index" md="6">
-                    <CardOrder :item="item" />
+                    <CardOrder :item="item" @dialog="handleDialog" />
                   </v-col>
                 </template>
               </v-row>
@@ -50,7 +50,47 @@
     </v-row>
 
     <v-dialog v-model="dialog_detail" persistent scrollable max-width="513px">
-      <v-card elevation="0">asdasd</v-card></v-dialog
+      <v-card elevation="0"
+        ><v-card-title style="border-bottom: 1px solid #ebebeb">
+          <span
+            class="h5"
+            style="font-size: 16px; color: #790c09; font-weight: bold"
+          >
+            Update Value
+          </span>
+        </v-card-title>
+        <v-card-text class="mt-2 pb-2">
+          <div>asd</div>
+        </v-card-text>
+        <v-card-actions
+          style="border-top: 1px solid #ebebeb; padding: 20px"
+          class="d-flex align justify-end"
+        >
+          <v-btn
+            dark
+            depressed
+            color="#BDBDBD"
+            width="120px"
+            height="48px"
+            class="text-capitalize"
+            style="border-radius: 8px"
+            @click="handleDialog(null)"
+          >
+            Cancel
+          </v-btn>
+          <v-btn
+            dark
+            depressed
+            color="#714333"
+            width="150px"
+            height="48px"
+            class="text-capitalize"
+            style="border-radius: 8px"
+          >
+            Update
+          </v-btn>
+        </v-card-actions></v-card
+      ></v-dialog
     >
   </div>
 </template>
@@ -83,7 +123,8 @@ export default {
         status: 1,
         category_id: '',
       },
-      dialog_detail: true,
+      dialog_detail: false,
+      dialog_item: null,
     }
   },
   computed: {
@@ -120,6 +161,10 @@ export default {
       this.filter = data
 
       this.product()
+    },
+    handleDialog(params) {
+      this.dialog_detail = !!params
+      this.dialog_item = params
     },
   },
 }

@@ -11,7 +11,9 @@
         <p class="mt-2">{{ item.description | truncate() }}.</p>
         <div class="flex-between">
           <h3>{{ item.unit_price | money() }}</h3>
-          <v-btn icon> <v-icon>mdi-shopping</v-icon></v-btn>
+          <v-btn icon @click="handleDialog">
+            <v-icon>mdi-shopping</v-icon></v-btn
+          >
         </div>
       </v-col>
     </v-row>
@@ -23,6 +25,11 @@ export default {
   name: 'CardOrder',
   props: {
     item: { type: Object, default: () => {} },
+  },
+  methods: {
+    handleDialog() {
+      this.$emit('dialog', this.item)
+    },
   },
 }
 </script>
