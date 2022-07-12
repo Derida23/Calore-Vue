@@ -12,8 +12,8 @@
         <div class="flex-between">
           <h3>{{ item.unit_price | money() }}</h3>
           <v-btn icon @click="handleDialog">
-            <v-icon>mdi-shopping</v-icon></v-btn
-          >
+            <v-icon>mdi-shopping</v-icon>
+          </v-btn>
         </div>
       </v-col>
     </v-row>

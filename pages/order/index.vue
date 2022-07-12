@@ -49,19 +49,25 @@
       <v-col md="3"><div>INI TEMPAT CHECKOUT</div></v-col>
     </v-row>
 
-    <v-dialog v-model="dialog_detail" persistent scrollable max-width="513px">
-      <v-card elevation="0"
-        ><v-card-title style="border-bottom: 1px solid #ebebeb">
-          <span
-            class="h5"
-            style="font-size: 16px; color: #790c09; font-weight: bold"
-          >
-            Update Value
-          </span>
-        </v-card-title>
-        <v-card-text class="mt-2 pb-2">
-          <div>asd</div>
-        </v-card-text>
+    <!-- Modal Dialog Item -->
+    <v-dialog v-model="dialog_detail" persistent scrollable max-width="700px">
+      <v-card elevation="0">
+        <div v-if="dialog_item" class="mx-5 my-5">
+          <v-row>
+            <div class="image-wrapper">
+              <img :src="dialog_item.image" :alt="dialog_item.name" />
+            </div>
+
+            <div class="ml-5">
+              <h2 class="order-title">{{ dialog_item.name }}</h2>
+              <div class="flex">
+                <v-btn icon>
+                  <v-icon>mdi-min</v-icon>
+                </v-btn>
+              </div>
+            </div>
+          </v-row>
+        </div>
         <v-card-actions
           style="border-top: 1px solid #ebebeb; padding: 20px"
           class="d-flex align justify-end"
@@ -87,11 +93,11 @@
             class="text-capitalize"
             style="border-radius: 8px"
           >
-            Update
+            Cart
           </v-btn>
-        </v-card-actions></v-card
-      ></v-dialog
-    >
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -217,5 +223,23 @@ export default {
 .card-container::-webkit-scrollbar-track-piece:start {
   border-radius: 16px;
   background-color: #f3eef0;
+}
+
+.image-wrapper {
+  width: 90px;
+  height: 90px;
+
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    background: #252525;
+    width: 90px;
+    height: 90px;
+    object-fit: cover !important;
+    border-radius: 0.5rem;
+  }
 }
 </style>
