@@ -36,11 +36,11 @@
             </div>
             <div class="mt-4 card-container">
               <v-row>
-                <template v-for="(item, index) in storeProduct.datas">
-                  <v-col :key="index" md="6">
+                <div v-for="(item, index) in storeProduct.datas" :key="index">
+                  <v-col md="6">
                     <CardOrder :item="item" @dialog="handleDialog" />
                   </v-col>
-                </template>
+                </div>
               </v-row>
             </div>
           </div>

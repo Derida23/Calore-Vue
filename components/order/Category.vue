@@ -6,9 +6,8 @@
       </div>
       <p>All</p>
     </div>
-    <template v-for="(item, index) in category">
+    <div v-for="(item, index) in category" :key="index">
       <div
-        :key="index"
         class="card mx-2"
         :class="{ 'card-active': Number(item.id) === data.id }"
         @click="handleCategory(item)"
@@ -21,7 +20,7 @@
         </div>
         <p>{{ item.name }}</p>
       </div>
-    </template>
+    </div>
   </v-row>
 </template>
 
