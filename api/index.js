@@ -25,6 +25,34 @@ const apiCategory = async (params, method, context) => {
     }
   }
 }
+const apiUom = async (params, method, context) => {
+  if (method === 'get') {
+    try {
+      const query = Object.keys(params)
+        .map((key) => key + '=' + params[key])
+        .join('&')
+
+      const response = await context.$axios.get(`/api/uom${'?' + query}`)
+      return success(response)
+    } catch (err) {
+      return failed(err.response)
+    }
+  }
+}
+const apiVariety = async (params, method, context) => {
+  if (method === 'get') {
+    try {
+      const query = Object.keys(params)
+        .map((key) => key + '=' + params[key])
+        .join('&')
+
+      const response = await context.$axios.get(`/api/variety${'?' + query}`)
+      return success(response)
+    } catch (err) {
+      return failed(err.response)
+    }
+  }
+}
 
 // Product ------------------------------------------------------------------------->
 const apiProduct = async (params, method, context) => {
@@ -41,4 +69,4 @@ const apiProduct = async (params, method, context) => {
     }
   }
 }
-export { apiLogin, apiCategory, apiProduct }
+export { apiLogin, apiCategory, apiProduct, apiUom, apiVariety }
