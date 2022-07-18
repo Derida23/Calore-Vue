@@ -21,7 +21,7 @@
           </div>
 
           <Category
-            :category="storeCategory.categories"
+            :category="storeMaster.categories"
             :data="data_category"
             @choose="handleCategory"
           />
@@ -46,7 +46,11 @@
           </div>
         </div>
       </v-col>
-      <v-col md="3"><div>INI TEMPAT CHECKOUT</div></v-col>
+      <v-col md="3"
+        ><div>
+          <pre>{{ storeMaster.uoms }}</pre>
+        </div></v-col
+      >
     </v-row>
 
     <!-- Modal Dialog Item -->
@@ -146,10 +150,10 @@ export default {
     CardOrder,
   },
   setup() {
-    const storeCategory = useMasterStore()
+    const storeMaster = useMasterStore()
     const storeProduct = useProductStore()
 
-    return { storeCategory, storeProduct }
+    return { storeMaster, storeProduct }
   },
   data() {
     return {
@@ -173,11 +177,23 @@ export default {
   },
   mounted() {
     this.category()
+    this.uom()
+    this.variety()
     this.product()
   },
   methods: {
     async category() {
-      const res = await this.storeCategory.getCategory({ status: 1 })
+      const res = await this.storeMaster.getCategory({ status: 1 })
+
+      return res
+    },
+    async uom() {
+      const res = await this.storeMaster.getUom({ status: 1 })
+
+      return res
+    },
+    async variety() {
+      const res = await this.storeMaster.getVariety({ status: 1 })
 
       return res
     },
