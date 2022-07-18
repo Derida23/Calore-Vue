@@ -37,7 +37,7 @@
             <div class="mt-4 card-container">
               <v-row>
                 <template v-for="(item, index) in storeProduct.datas">
-                  <v-col md="6" :key="index">
+                  <v-col :key="index" md="6">
                     <CardOrder :item="item" @dialog="handleDialog" />
                   </v-col>
                 </template>
@@ -48,7 +48,7 @@
       </v-col>
       <v-col md="3"
         ><div>
-          <pre>{{ storeMaster.uoms }}</pre>
+          <pre>{{ storeMaster.varieties }}</pre>
         </div></v-col
       >
     </v-row>
@@ -83,11 +83,15 @@
                 <div>
                   <h3>Mood</h3>
                   <div class="order-mood">
-                    <div class="img-mood">
-                      <img src="~/static/order/Hot.png" alt="variety icon" />
-                    </div>
-                    <div class="img-mood">
-                      <img src="~/static/order/Cold.png" alt="variety icon" />
+                    <div
+                      v-for="(item, index) in storeMaster.varieties"
+                      :key="index"
+                      class="img-mood"
+                    >
+                      <img
+                        :src="`/order/${item.name}.png`"
+                        :alt="`variety ${item.name} icon`"
+                      />
                     </div>
                   </div>
                 </div>
@@ -95,9 +99,13 @@
                 <div class="ml-5">
                   <h3>Size</h3>
                   <div class="order-mood">
-                    <div class="img-mood">S</div>
-                    <div class="img-mood">M</div>
-                    <div class="img-mood">L</div>
+                    <div
+                      v-for="(item, index) in storeMaster.uoms"
+                      :key="index"
+                      class="img-mood"
+                    >
+                      {{ item.name | char() }}
+                    </div>
                   </div>
                 </div>
               </v-row>
