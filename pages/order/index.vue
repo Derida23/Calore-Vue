@@ -36,11 +36,13 @@
             </div>
             <div class="mt-4 card-container">
               <v-row>
-                <template v-for="(item, index) in storeProduct.datas">
-                  <v-col :key="index" md="6">
-                    <CardOrder :item="item" @dialog="handleDialog" />
-                  </v-col>
-                </template>
+                <v-col
+                  v-for="(item, index) in storeProduct.datas"
+                  :key="index"
+                  md="6"
+                >
+                  <CardOrder :item="item" @dialog="handleDialog" />
+                </v-col>
               </v-row>
             </div>
           </div>
@@ -114,31 +116,44 @@
         </div>
         <v-card-actions
           style="border-top: 1px solid #ebebeb; padding: 20px"
-          class="d-flex align justify-end"
+          class="d-flex align justify-space-between"
         >
-          <v-btn
-            dark
-            depressed
-            color="#BDBDBD"
-            width="120px"
-            height="48px"
-            class="text-capitalize"
-            style="border-radius: 8px"
-            @click="handleDialog(null)"
-          >
-            Cancel
-          </v-btn>
-          <v-btn
-            dark
-            depressed
-            color="#714333"
-            width="150px"
-            height="48px"
-            class="text-capitalize"
-            style="border-radius: 8px"
-          >
-            Cart
-          </v-btn>
+          <div>
+            <v-btn
+              icon
+              width="40px"
+              height="40px"
+              class="text-capitalize"
+              style="border-radius: 100%; background: #714333"
+            >
+              <v-icon color="#fff">mdi-plus-box</v-icon>
+            </v-btn>
+          </div>
+          <div>
+            <v-btn
+              dark
+              depressed
+              color="#BDBDBD"
+              width="120px"
+              height="48px"
+              class="text-capitalize"
+              style="border-radius: 8px"
+              @click="handleDialog(null)"
+            >
+              Cancel
+            </v-btn>
+            <v-btn
+              dark
+              depressed
+              color="#714333"
+              width="150px"
+              height="48px"
+              class="text-capitalize"
+              style="border-radius: 8px"
+            >
+              Cart
+            </v-btn>
+          </div>
         </v-card-actions>
       </v-card>
     </v-dialog>
